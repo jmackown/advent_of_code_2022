@@ -7,6 +7,7 @@ def create_df(data=None):
     df = load(data)
     df["elf"] = df.isnull().all(axis=1).cumsum() + 1
     df = df.dropna()
+    df.rename(columns={0: 'raw_data'}, inplace=True)
     return df
 
 

@@ -7,7 +7,6 @@ from tabulate import tabulate
 
 def load(filename):
     df = pd.read_csv(filename, sep=" ", header=None, skip_blank_lines=False)
-    df.rename(columns={0: 'raw_data'}, inplace=True)
     return df
 
 
