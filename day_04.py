@@ -31,8 +31,27 @@ def part_1(df):
 
 
 def part_2(df):
-    # display(df)
-    pass
+    df[["elf_1", "elf_2"]] = df[0].str.split(",", expand=True)
+    for col in ["elf_1", "elf_2"]:
+        df[col] = df.apply(
+            lambda x: [
+                i
+                for i in range(int(x[col].split("-")[0]), int(x[col].split("-")[1]) + 1)
+            ],
+            axis=1,
+        )
+
+    df["2_is_in_1"] = df.apply(
+        lambda x: any(elem in x["elf_1"] for elem in x["elf_2"]), axis=1
+    )
+    df["1_is_in_2"] = df.apply(
+        lambda x: any(elem in x["elf_2"] for elem in x["elf_1"]), axis=1
+    )
+    df["overlap"] = df.apply(
+        lambda x: True if x["2_is_in_1"] or x["1_is_in_2"] else False, axis=1
+    )
+
+    return df["overlap"].sum()
 
 
 part1 = part_1(df=df)

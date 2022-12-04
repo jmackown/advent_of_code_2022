@@ -15,4 +15,4 @@ def test_part_1():
 def test_part_2():
     result = part_2(df=test_df_2)
 
-    assert result is None
+    assert result == 4
