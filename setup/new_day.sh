@@ -1,7 +1,7 @@
 day=$1
 
 touch "input_data/day${day}.txt"
-touch "tests/data/day${day}.txt"
+touch "tests/data/day_${day}.txt"
 
 
 

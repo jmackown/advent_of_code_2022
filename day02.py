@@ -12,14 +12,6 @@ WINNERS = [("R", "S"), ("P", "R"), ("S", "P")]
 DECODE_OUTCOME = {"X": 0, "Y": 3, "Z": 6}
 
 
-# def create_df(data=None):
-#     if not data:
-#         data = get_input(day="02")
-#     df = load(data)
-#     df.rename(columns={0: "elf", 1: "me"}, inplace=True)
-#     return df
-
-
 def calculate_outcome(row):
 
     if row["elf"] == row["me"]:
