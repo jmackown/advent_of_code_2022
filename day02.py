@@ -1,4 +1,7 @@
-from utilities.dataframes import get_input, load
+from utilities.dataframes import create_df, display
+
+DAY = "02"
+
 
 DECODE = {"X": "R", "Y": "P", "Z": "S", "A": "R", "B": "P", "C": "S"}
 
@@ -9,12 +12,12 @@ WINNERS = [("R", "S"), ("P", "R"), ("S", "P")]
 DECODE_OUTCOME = {"X": 0, "Y": 3, "Z": 6}
 
 
-def create_df(data=None):
-    if not data:
-        data = get_input(day="02")
-    df = load(data)
-    df.rename(columns={0: "elf", 1: "me"}, inplace=True)
-    return df
+# def create_df(data=None):
+#     if not data:
+#         data = get_input(day="02")
+#     df = load(data)
+#     df.rename(columns={0: "elf", 1: "me"}, inplace=True)
+#     return df
 
 
 def calculate_outcome(row):
@@ -27,7 +30,8 @@ def calculate_outcome(row):
         return 6
 
 
-def get_total_score(df):
+def part_1(df):
+    df.rename(columns={0: "elf", 1: "me"}, inplace=True)
 
     df["elf"] = df["elf"].map(DECODE)
     df["me"] = df["me"].map(DECODE)
@@ -50,9 +54,12 @@ def calculate_shape(row):
         return [x[0] for x in WINNERS if x[1] == row["elf"]][0]
 
 
-def get_shapes(df):
+def part_2(df):
+    df.rename(columns={0: "elf", 1: "me"}, inplace=True)
     df["elf"] = df["elf"].map(DECODE)
     df["outcome"] = df["me"].map(DECODE_OUTCOME)
+
+    display(df)
 
     df["my_shape"] = df.apply(lambda x: calculate_shape(row=x), axis=1)
     df["shape_score"] = df["my_shape"].map(SHAPE)
@@ -61,8 +68,8 @@ def get_shapes(df):
     return df["total_score"].sum()
 
 
-part1 = get_total_score(df=create_df())
+part1 = part_1(df=create_df(day=DAY))
 print(f"Part 1: {part1}")
 
-part2 = get_shapes(df=create_df())
+part2 = part_2(df=create_df(day=DAY))
 print(f"Part 2: {part2}")

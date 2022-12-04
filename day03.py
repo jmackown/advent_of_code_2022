@@ -1,19 +1,14 @@
 import string
 
-from utilities.dataframes import display, get_input, load
+from utilities.dataframes import create_df, display, get_input, load
+
+DAY = "03"
+
 
 PRIORITY_MAPPING = {
     c: i + 1
     for i, c in enumerate(list(string.ascii_lowercase) + list(string.ascii_uppercase))
 }
-
-
-def create_df(data=None):
-    if not data:
-        data = get_input(day="03")
-    df = load(data)
-    df.rename(columns={0: "contents"}, inplace=True)
-    return df
 
 
 def split_in_half(data):
@@ -27,7 +22,8 @@ def get_common_elements(data):
     return list(set(data[0]).intersection(data[1]))[0]
 
 
-def sum_priorities(df):
+def part_1(df):
+    df.rename(columns={0: "contents"}, inplace=True)
 
     df["compartments"] = df.apply(lambda x: split_in_half(data=x["contents"]), axis=1)
     df["common"] = df.apply(
@@ -47,7 +43,8 @@ def get_more_common_elements(x):
     return list(common)[0]
 
 
-def groups(df):
+def part_2(df):
+    df.rename(columns={0: "contents"}, inplace=True)
     df["every_3rd"] = df[::3]
     df["group"] = df["every_3rd"].notnull().cumsum()
     df = df.groupby("group")["contents"].apply(get_more_common_elements).reset_index()
@@ -59,9 +56,9 @@ def groups(df):
     return df["score"].sum()
 
 
-part1 = sum_priorities(df=create_df())
+part1 = part_1(df=create_df(day=DAY))
 print(f"Part 1: {part1}")
 
 
-part2 = groups(df=create_df())
+part2 = part_2(df=create_df(day=DAY))
 print(f"Part 2: {part2}")

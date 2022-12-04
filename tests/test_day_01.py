@@ -1,18 +1,20 @@
-from day01 import create_df, get_max_total_calories, get_total_top_3
+from day01 import create_df, part_1, part_2
+from utilities.dataframes import load
 
-test_data = "./data/day_01_a.txt"
-test_df = create_df(data=test_data)
+test_data = "./data/day_01.txt"
+test_df_1 = load(filename=test_data)
+test_df_2 = load(filename=test_data)
 
 
 def test_part_1():
 
-    result = get_max_total_calories(df=test_df)
+    result = part_1(df=test_df_1)
 
     assert result == 24000
 
 
 def test_part_2():
 
-    result = get_total_top_3(df=test_df)
+    result = part_2(df=test_df_2)
 
     assert result == 45000

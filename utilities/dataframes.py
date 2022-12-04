@@ -18,3 +18,11 @@ def get_input(day):
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
         f"input_data/day{day}.txt",
     )
+
+
+def create_df(day):
+
+    raw_data = get_input(day=day)
+    df = load(raw_data)
+
+    return df
