@@ -1,4 +1,4 @@
-from day03 import create_df, sum_priorities, groups
+from day03 import create_df, groups, sum_priorities
 
 test_data = "./data/day_03.txt"
 test_df = create_df(data=test_data)

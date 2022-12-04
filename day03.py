@@ -1,7 +1,5 @@
 import string
 
-import numpy as np
-
 from utilities.dataframes import display, get_input, load
 
 PRIORITY_MAPPING = {
@@ -41,18 +39,18 @@ def sum_priorities(df):
 
     return df["score"].sum()
 
+
 def get_more_common_elements(x):
     contents = x.to_list()
     common = set.intersection(*map(set, contents))
-
 
     return list(common)[0]
 
 
 def groups(df):
-    df['every_3rd'] = df[::3]
-    df['group'] = df['every_3rd'].notnull().cumsum()
-    df = df.groupby('group')['contents'].apply(get_more_common_elements).reset_index()
+    df["every_3rd"] = df[::3]
+    df["group"] = df["every_3rd"].notnull().cumsum()
+    df = df.groupby("group")["contents"].apply(get_more_common_elements).reset_index()
 
     df["score"] = df["contents"].map(PRIORITY_MAPPING)
 

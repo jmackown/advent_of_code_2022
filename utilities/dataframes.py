@@ -1,4 +1,3 @@
-
 import os
 
 import pandas as pd
@@ -15,4 +14,7 @@ def display(df):
 
 
 def get_input(day):
-    return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), f'input_data/day{day}.txt')
+    return os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        f"input_data/day{day}.txt",
+    )

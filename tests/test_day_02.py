@@ -1,10 +1,7 @@
-from day02 import get_total_score, create_df, get_shapes
-
-from utilities.dataframes import display
+from day02 import create_df, get_shapes, get_total_score
 
 test_data = "./data/day_02.txt"
 test_df = create_df(data=test_data)
-
 
 
 def test_get_total_score():
@@ -14,7 +11,6 @@ def test_get_total_score():
     result = get_total_score(df=test_df)
 
     assert result == expected_result
-
 
 
 def test_get_shapes():
