@@ -63,8 +63,6 @@ def perform_instruction(piles, move, _from, to):
         move_to.append(moving)
     return piles
 
-    return piles
-
 
 def part_1(filename):
     with open(filename) as file:
@@ -85,12 +83,42 @@ def part_1(filename):
     # display(df)
 
 
-# def part_2(df):
-#     display(df)
+def perform_multiple_instruction(piles, move, _from, to):
+    move_from = piles[_from - 1]
+    move_from_len = len(move_from)
+    move_to = piles[to - 1]
+    moving = move_from[-move:]
+    move_from_remaining = move_from_len - move
+    piles[_from - 1] = move_from[:move_from_remaining]
+    piles[to - 1] = move_to + moving
+    return piles
+
+
+def part_2(filename):
+    with open(filename) as file:
+        data_by_line = file.readlines()
+
+    piles, instructions = get_piles_as_dict(data=data_by_line)
+
+    for i, instruction in instructions.items():
+        r = re.findall(r"\d+", instruction)
+
+        final_piles = perform_multiple_instruction(
+            piles=piles, move=int(r[0]), _from=int(r[1]), to=int(r[2])
+        )
+
+    top_of_of_the_piles = []
+    for item in final_piles:
+        try:
+            top_of_of_the_piles.append(item.pop())
+        except Exception:
+            pass
+
+    return "".join(top_of_of_the_piles)
 
 
 part1 = part_1(filename="./input_data/day05.txt")
 print(f"Part 1: {part1}")
 
-# part2 = part_2(df=df)
-# print(f"Part 2: {part2}")
+part2 = part_2(filename="./input_data/day05.txt")
+print(f"Part 2: {part2}")
