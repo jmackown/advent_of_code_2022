@@ -1,8 +1,8 @@
-from day_{{day}} import part_1, part_2
+from puzzles.day_{{day}} import part_1, part_2
+from puzzles.utilities.dataframes import load
+from puzzles.utilities.defs import TEST_INPUT_DATA
 
-from utilities.dataframes import load
-
-test_data = "./data/day_{{day}}.txt"
+test_data = f"{TEST_INPUT_DATA}/day_{{day}}.txt"
 test_df_1 = load(filename=test_data)
 test_df_2 = load(filename=test_data)
 

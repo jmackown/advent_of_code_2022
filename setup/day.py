@@ -1,4 +1,4 @@
-from utilities.dataframes import create_df, display
+from puzzles.utilities.dataframes import create_df, display
 
 DAY = "{{day}}"
 df = create_df(day=DAY)

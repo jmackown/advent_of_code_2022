@@ -1,6 +1,7 @@
-from day_05 import part_1, part_2
+from puzzles.day_05 import part_1, part_2
+from puzzles.utilities.defs import TEST_INPUT_DATA
 
-test_data = "./data/day_05.txt"
+test_data = f"{TEST_INPUT_DATA}/day_05.txt"
 
 
 def test_part_1():

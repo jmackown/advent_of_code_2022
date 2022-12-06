@@ -1,14 +1,9 @@
-import json
 import re
-from io import StringIO
 
 import numpy as np
-import pandas as pd
-
-from utilities.dataframes import create_df, display
+from utilities.defs import INPUT_DATA
 
 DAY = "05"
-# df = create_df(day=DAY)
 
 
 def strip_line(line):
@@ -117,8 +112,8 @@ def part_2(filename):
     return "".join(top_of_of_the_piles)
 
 
-part1 = part_1(filename="./input_data/day05.txt")
+part1 = part_1(filename=f"{INPUT_DATA}/day05.txt")
 print(f"Part 1: {part1}")
 
-part2 = part_2(filename="./input_data/day05.txt")
+part2 = part_2(filename=f"{INPUT_DATA}/day05.txt")
 print(f"Part 2: {part2}")

@@ -1,4 +1,4 @@
-from utilities.dataframes import create_df, get_input, load
+from utilities.dataframes import create_df
 
 DAY = "01"
 
