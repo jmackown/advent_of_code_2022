@@ -7,6 +7,18 @@ the input data formatting (I did use numpy though so.. close?).
 This should not be used as an example of how to do anything, this is just me working
 stuff out as I go along.
 
+
+# Contents
+  * [How to run](#how-to-run)
+  * [What was I thinking](#what-was-i-thinking)
+    + [Day 01](#day-01)
+    + [Day 02](#day-02)
+    + [Day 03](#day-03)
+    + [Day 04](#day-04)
+    + [Day 05](#day-05)
+    + [Day 06](#day-06)
+
+
 ## How to run
 
 I'm using a 3.10 venv, other versions may or may not work.
@@ -74,3 +86,13 @@ off the stacks and move them around for part one, then slice and move for part 2
 
 It's messy af but I did this one in the evening after a long day so I'm just pleased
 I got it done tbh.
+
+
+### Day 06
+
+This looked like it was going to be harder than it was. Again, ditched pandas but never mind.
+I just looped through the string in groups of 4 chars, converted the short string to a set (to
+remove duplicates) and the first set to be 4 chars long was the winner.
+
+Part 2 was literally the same as part 1 except I added a param for the marker length so I could
+switch between 4 and 14 easily.
